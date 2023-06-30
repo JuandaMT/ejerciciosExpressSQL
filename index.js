@@ -2,7 +2,8 @@ const express = require("express");
 const mysql = require("mysql2");
 const app = express();
 
-app.use(express.json());
+//middlware
+app.use(express.json()); //para que el body no sea undefined
 
 const db = mysql.createConnection({
   host: "localhost",
@@ -12,8 +13,6 @@ const db = mysql.createConnection({
 });
 db.connect();
 
-//middlware
-app.use(express.json()); //para que el body no sea undefined
 
 /* CREAR BASE DE DATOS */
 app.get("/createdb", (req, res) => {
